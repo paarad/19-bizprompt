@@ -72,7 +72,7 @@ export async function generateBusinessIdea(request: GenerateIdeaRequest): Promis
 
   try {
     return JSON.parse(response)
-  } catch (error) {
+  } catch {
     throw new Error('Failed to parse generated business idea')
   }
 } 
