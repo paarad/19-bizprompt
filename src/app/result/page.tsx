@@ -156,6 +156,19 @@ Generated with BizPrompt from prompt: "${result.prompt}"
     }
   }
 
+  const isReasonableMvpTime = (value: string | undefined) => {
+    if (!value) return false
+    const lower = value.toLowerCase()
+    if (lower.includes('year')) return false
+    if (lower.includes('month')) return false
+    const weekMatch = lower.match(/(\d+)(?:\s*-\s*(\d+))?\s*week/)
+    if (!weekMatch) return false
+    const minWeeks = parseInt(weekMatch[1], 10)
+    const maxWeeks = weekMatch[2] ? parseInt(weekMatch[2], 10) : minWeeks
+    if (Number.isNaN(minWeeks) || Number.isNaN(maxWeeks)) return false
+    return maxWeeks <= 12
+  }
+
   if (!result) {
     return (
       <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -256,13 +269,15 @@ Generated with BizPrompt from prompt: "${result.prompt}"
           <Separator />
 
           {/* Time to MVP */}
-          <div className="flex items-start gap-3">
-            <Clock className="h-5 w-5 text-purple-500 mt-1 flex-shrink-0" />
-            <div className="flex-1">
-              <h3 className="font-semibold mb-2">Time to MVP</h3>
-              <p className="text-muted-foreground">{result.idea.time_to_mvp}</p>
+          {isReasonableMvpTime(result.idea.time_to_mvp) && (
+            <div className="flex items-start gap-3">
+              <Clock className="h-5 w-5 text-purple-500 mt-1 flex-shrink-0" />
+              <div className="flex-1">
+                <h3 className="font-semibold mb-2">Time to MVP</h3>
+                <p className="text-muted-foreground">{result.idea.time_to_mvp}</p>
+              </div>
             </div>
-          </div>
+          )}
         </CardContent>
       </Card>
 

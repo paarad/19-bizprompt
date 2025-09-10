@@ -34,7 +34,7 @@ export async function generateBusinessIdea(request: GenerateIdeaRequest): Promis
   - description: 2-3 sentences describing the business concept
   - monetization: Clear revenue model and pricing strategy
   - tools_needed: Array of specific tools, platforms, or skills required
-  - time_to_mvp: Realistic timeframe to build minimum viable product
+  - time_to_mvp: Realistic timeframe to build minimum viable product (expressed in weeks, max 12). If it would exceed 12 weeks, re-scope to the fastest scrappy MVP deliverable within 2-12 weeks and output that timeframe
   - difficulty: One of "Beginner", "Intermediate", "Advanced"
   - category: Business model type (e.g., "SaaS", "E-commerce", "Service", "Content", "Agency")
 
