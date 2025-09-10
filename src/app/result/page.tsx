@@ -159,14 +159,14 @@ Generated with BizPrompt from prompt: "${result.prompt}"
   const isReasonableMvpTime = (value: string | undefined) => {
     if (!value) return false
     const lower = value.toLowerCase()
-    if (lower.includes('year')) return false
-    if (lower.includes('month')) return false
-    const weekMatch = lower.match(/(\d+)(?:\s*-\s*(\d+))?\s*week/)
-    if (!weekMatch) return false
-    const minWeeks = parseInt(weekMatch[1], 10)
-    const maxWeeks = weekMatch[2] ? parseInt(weekMatch[2], 10) : minWeeks
-    if (Number.isNaN(minWeeks) || Number.isNaN(maxWeeks)) return false
-    return maxWeeks <= 12
+    if (lower.includes('year') || lower.includes('month') || lower.includes('week')) return false
+    const dayMatch = lower.match(/(\d+)(?:\s*-\s*(\d+))?\s*day/)
+    if (!dayMatch) return false
+    const minDays = parseInt(dayMatch[1], 10)
+    const maxDays = dayMatch[2] ? parseInt(dayMatch[2], 10) : minDays
+    if (Number.isNaN(minDays) || Number.isNaN(maxDays)) return false
+    if (minDays < 1) return false
+    return maxDays <= 10
   }
 
   if (!result) {
