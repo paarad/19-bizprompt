@@ -11,7 +11,7 @@ import { Lightbulb, Sparkles, ArrowRight, Clock, Target, Zap } from 'lucide-reac
 const examplePrompts = [
   {
     title: "Student Side Hustle",
-    prompt: "I&apos;m a broke college student who wants to start a side hustle with minimal upfront cost",
+    prompt: "I’m a broke college student who wants to start a side hustle with minimal upfront cost",
     category: "Side Hustle"
   },
   {
@@ -21,7 +21,7 @@ const examplePrompts = [
   },
   {
     title: "Local Business",
-    prompt: "I want a local business with recurring revenue that doesn&apos;t require technical skills",
+    prompt: "I want a local business with recurring revenue that doesn’t require technical skills",
     category: "Local Business"
   },
   {
@@ -161,13 +161,13 @@ export default function HomePage() {
         <CardHeader>
           <CardTitle className="text-center">What kind of business idea are you looking for?</CardTitle>
           <CardDescription className="text-center">
-            Describe your situation, goals, or preferences. Be as specific as you&apos;d like.
+            Describe your situation, goals, or preferences. Be as specific as you’d like.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <Textarea
-              placeholder="E.g., I&apos;m a designer looking for a SaaS idea I can build on weekends..."
+              placeholder="E.g., I’m a designer looking for a SaaS idea I can build on weekends..."
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               className="min-h-[120px] text-lg"
